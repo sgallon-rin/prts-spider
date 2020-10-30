@@ -226,7 +226,7 @@ def get_agent_info_single(agent_dict, save_icon=False, save_voice=False):
     print("Spider done for agent {}".format(agent_spider.get_name()))
     return agent_spider.info_dict
 
-def main():
+def main(save_icon=False, save_voice=False):
     if not os.path.exists(IMG_DIR):
         os.makedirs(IMG_DIR)
     with open(LOAD_JSON_PATH, 'r') as handler:
@@ -234,7 +234,7 @@ def main():
     result = []
     for agent_dict in tqdm(agent_list):
         try:
-            agent_info_dict = get_agent_info_single(agent_dict, save_icon=False, save_voice=True)
+            agent_info_dict = get_agent_info_single(agent_dict, save_icon=save_icon, save_voice=save_voice)
             result.append(agent_info_dict)
         except:
             print("Something went wrong! Skip and continue.")
@@ -258,7 +258,7 @@ def main():
         print("Done! Result file saved to {}".format(os.path.abspath(SAVE_JSON_PATH)))
     """
    
-def test(k=5):
+def test(k=5, save_icon=False, save_voice=False):
     if not os.path.exists(IMG_DIR):
         os.makedirs(IMG_DIR)
     if not os.path.exists(VOICE_DIR):
@@ -269,7 +269,7 @@ def test(k=5):
     agent_list = random.choices(agent_list, k=k)
     for agent_dict in tqdm(agent_list):
         try:
-            agent_info_dict = get_agent_info_single(agent_dict, save_icon=False, save_voice=True)
+            agent_info_dict = get_agent_info_single(agent_dict, save_icon=save_icon, save_voice=save_voice)
             result.append(agent_info_dict)
         except:
             print("Something went wrong! Skip and continue.")
@@ -297,5 +297,5 @@ def test(k=5):
 
 
 if __name__ == "__main__":
-    main()
-    #test(5)
+    main(save_icon=False, save_voice=False)
+    #test(k=5, save_icon=False, save_voice=False)
