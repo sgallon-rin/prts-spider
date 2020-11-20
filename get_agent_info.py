@@ -76,6 +76,9 @@ def save_from_url(url: str, img_name: str, img_dir=IMG_DIR, headers=HEADERS):
             print("Spider gets status code {}, please check.".format(response.status_code))
 
 def get_agent_file(bs_list, kw="基础档案"):
+    """
+    html解析用，截取BeautifulSoup中关键字字段之后的内容
+    """
     for i, bs in enumerate(bs_list):
         if kw in str(bs):
             result = bs_list[i::]
@@ -297,5 +300,5 @@ def test(k=5, save_icon=False, save_voice=False):
 
 
 if __name__ == "__main__":
-    main(save_icon=False, save_voice=False)
+    main(save_icon=True, save_voice=True)
     #test(k=5, save_icon=False, save_voice=False)
