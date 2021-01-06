@@ -3,3 +3,4 @@ data/
 img/
 *.ipynb
 voice/
+__pycache__/
